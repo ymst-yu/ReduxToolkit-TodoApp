@@ -18,6 +18,7 @@ const TaskForm: React.FC<PropTypes> = ({ edit }) => {
   const selectedTask = useSelector(selectSelectedTask);
   const { register, handleSubmit, reset } = useForm();
   const handleCreate = (data: Inputs) => {
+    if (!data.taskTitle) return;
     dispatch(createTask(data.taskTitle));
     reset(); // フォーム送信後にテキストフィールドに残ってる文字をクリアしてくれる。setInputText("")と同じ。
   };
